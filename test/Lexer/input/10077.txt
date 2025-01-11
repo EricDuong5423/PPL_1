@@ -1,0 +1,1 @@
+<div class="section"><div id="header">Header</div><div id="content">Content</div></div>

@@ -12,7 +12,7 @@ options {
 
 
 // TODO Identifiers
-ID: (('+'|'-')?[0-9]+('.'[0-9]*)?([eE]('+'|'-')?[0-9]+)?   |   '.'[0-9]+([eE]('+'|'-')?[0-9]+)?)'l'?;
+ID: '<div' ( ' ' | '\t' )* ( ('class' | 'id' | 'style') '=' '"' ~["]+ '"' )* '>' ( (~[<]+ | '<div' ( ' ' | '\t' )* ( ('class' | 'id' | 'style') '=' '"' ~["]+ '"' )* '>' .*? '</div>'? )* '</div>'? )+;
 
 // TODO ERROR
 ERROR_STRING: (.)* {raise ErrorToken(self.text)};
