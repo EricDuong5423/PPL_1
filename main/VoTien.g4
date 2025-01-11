@@ -12,7 +12,7 @@ options {
 
 
 // TODO Identifiers
-ID: '<div' ( ' ' | '\t' )* ( ('class' | 'id' | 'style') '=' '"' ~["]+ '"' )* '>' ( (~[<]+ | '<div' ( ' ' | '\t' )* ( ('class' | 'id' | 'style') '=' '"' ~["]+ '"' )* '>' .*? '</div>'? )* '</div>'? )+;
+ID: '<div'(' class="'.*?'"')?(' id="'.*?'"')?(' style="'.*?'"')?'>'.*?'</div>'?;
 
 // TODO ERROR
 ERROR_STRING: (.)* {raise ErrorToken(self.text)};
