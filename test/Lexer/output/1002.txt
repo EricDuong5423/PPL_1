@@ -1,1 +1,1 @@
-Error Token <div class="header" style="color: red">Header content
+1,<EOF>

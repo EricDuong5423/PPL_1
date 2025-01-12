@@ -385,31 +385,211 @@ class LexerSuite(unittest.TestCase):
     # def test_008(self):
     #     """Test số tự nhiên hợp lệ: Dãy hợp lệ với độ dài lớn hơn"""
     #     self.assertTrue(TestLexer.test("313131", "313131,<EOF>", 1008))
-# Mô tả một chuỗi tương tự thẻ div trong HTML, có thể có cả thẻ đóng - mở, hoặc chỉ có thẻ mở, nội dung giữa 2 thẻ là chuỗi bất kì, bên trong thẻ mở là các cặp attribute="value".
+# 12. Mô tả một chuỗi tương tự thẻ div trong HTML, có thể có cả thẻ đóng - mở, hoặc chỉ có thẻ mở, nội dung giữa 2 thẻ là chuỗi bất kì, bên trong thẻ mở là các cặp attribute="value".
+    # def test_001(self):
+    #     """Test thẻ div hợp lệ: Chứa thẻ mở và đóng, với các attribute hợp lệ"""
+    #     self.assertTrue(TestLexer.test('<div class="container" id="main">Content here</div>', '<div class="container" id="main">Content here</div>,<EOF>', 1001))
+
+    # def test_002(self):
+    #     """Test thẻ div hợp lệ: Chỉ có thẻ mở với các attribute hợp lệ"""
+    #     self.assertTrue(TestLexer.test('<div class="header" style="color: red">Header content', '<div class="header" style="color: red">Header content,<EOF>', 1002))
+
+    # def test_003(self):
+    #     """Test thẻ div hợp lệ: Thẻ mở và đóng, với attribute và nội dung tùy ý"""
+    #     self.assertTrue(TestLexer.test('<div id="footer">Footer content</div>', '<div id="footer">Footer content</div>,<EOF>', 1003))
+
+    # def test_004(self):
+    #     """Test thẻ div không hợp lệ: Sai cú pháp attribute trong thẻ mở"""
+    #     self.assertTrue(TestLexer.test('<div class="container" style="color:red" >Content</div>', 'Error Token <div class="container" style="color:red" >Content</div>', 1004))
+
+    # def test_005(self):
+    #     """Test thẻ div không hợp lệ: Cặp dấu ngoặc nhọn không tương ứng"""
+    #     self.assertTrue(TestLexer.test('<div class="box">Content<div>', 'Error Token <div class="box">Content<div>', 1005))
+
+    # def test_006(self):
+    #     """Test thẻ div không hợp lệ: Không có thẻ mở hay đóng"""
+    #     self.assertTrue(TestLexer.test('', 'Error Token ', 1006))
+# 13. Mô tả tên hàm trong C++ theo Camel Case.
+    # def test_001(self):
+    #     """Test tên hàm hợp lệ: Tên đơn giản, đúng CamelCase"""
+    #     self.assertTrue(TestLexer.test('calculateSum', 'calculateSum,<EOF>', 1001))
+
+    # def test_002(self):
+    #     """Test tên hàm hợp lệ: Tên dài với nhiều từ, đúng CamelCase"""
+    #     self.assertTrue(TestLexer.test('findMaximumValueInArray', 'findMaximumValueInArray,<EOF>', 1002))
+
+    # def test_003(self):
+    #     """Test tên hàm hợp lệ: Tên có một từ, viết thường"""
+    #     self.assertTrue(TestLexer.test('run', 'run,<EOF>', 1003))
+
+    # def test_004(self):
+    #     """Test tên hàm không hợp lệ: Bắt đầu bằng chữ in hoa"""
+    #     self.assertTrue(TestLexer.test('CalculateSum', 'Error Token CalculateSum', 1004))
+
+    # def test_005(self):
+    #     """Test tên hàm không hợp lệ: Chứa ký tự gạch dưới"""
+    #     self.assertTrue(TestLexer.test('find_max_value', 'Error Token find_max_value', 1005))
+
+    # def test_006(self):
+    #     """Test tên hàm không hợp lệ: Bắt đầu bằng số"""
+    #     self.assertTrue(TestLexer.test('123calculate', 'Error Token 123calculate', 1006))
+
+    # def test_007(self):
+    #     """Test tên hàm không hợp lệ: Chứa ký tự không hợp lệ"""
+    #     self.assertTrue(TestLexer.test('process-data', 'Error Token process-data', 1007))
+
+    # def test_008(self):
+    #     """Test tên hàm không hợp lệ: Ký tự đặc biệt trong tên"""
+    #     self.assertTrue(TestLexer.test('isValidInput#', 'Error Token isValidInput#', 1008))
+
+    # def test_009(self):
+    #     """Test tên hàm hợp lệ: Tên cực ngắn nhưng đúng CamelCase"""
+    #     self.assertTrue(TestLexer.test('a', 'a,<EOF>', 1009))
+# 14.Mô tả tên hằng số trong C++ theo Snake Case. 
+    # def test_001(self):
+    #     """Test hằng số hợp lệ: Tên đơn giản"""
+    #     self.assertTrue(TestLexer.test("MAX_VALUE", "MAX_VALUE,<EOF>", 14001))
+
+    # def test_002(self):
+    #     """Test hằng số hợp lệ: Tên chứa chữ số"""
+    #     self.assertTrue(TestLexer.test("BUFFER_SIZE_1024", "BUFFER_SIZE_1024,<EOF>", 14002))
+
+    # def test_003(self):
+    #     """Test hằng số hợp lệ: Tên chỉ có chữ cái"""
+    #     self.assertTrue(TestLexer.test("PI", "PI,<EOF>", 14003))
+
+    # def test_004(self):
+    #     """Test hằng số không hợp lệ: Bắt đầu bằng dấu gạch dưới"""
+    #     self.assertTrue(TestLexer.test("_MAX_VALUE", "Error Token _MAX_VALUE", 14004))
+
+    # def test_005(self):
+    #     """Test hằng số không hợp lệ: Chứa hai dấu gạch dưới liên tiếp"""
+    #     self.assertTrue(TestLexer.test("MAX__VALUE", "Error Token MAX__VALUE", 14005))
+
+    # def test_006(self):
+    #     """Test hằng số không hợp lệ: Không in hoa toàn bộ"""
+    #     self.assertTrue(TestLexer.test("max_value", "Error Token max_value", 14006))
+
+    # def test_007(self):
+    #     """Test hằng số không hợp lệ: Chứa ký tự đặc biệt"""
+    #     self.assertTrue(TestLexer.test("MAX-VALUE", "Error Token MAX-VALUE", 14007))
+
+    # def test_008(self):
+    #     """Test hằng số không hợp lệ: Kết thúc bằng dấu gạch dưới"""
+    #     self.assertTrue(TestLexer.test("MAX_VALUE_", "Error Token MAX_VALUE_", 14008))
+
+    # def test_009(self):
+    #     """Test hằng số không hợp lệ: Tên rỗng"""
+    #     self.assertTrue(TestLexer.test("", "Error Token ", 14009))
+# 15. Mô tả tên hàm trong python.
+    # def test_001(self):
+    #     """Test tên hàm hợp lệ: Tên hàm theo snake_case"""
+    #     self.assertTrue(TestLexer.test("my_function", "my_function,<EOF>", 15001))
+
+    # def test_002(self):
+    #     """Test tên hàm hợp lệ: Tên hàm bắt đầu bằng dấu gạch dưới"""
+    #     self.assertTrue(TestLexer.test("_my_function", "_my_function,<EOF>", 15002))
+
+    # def test_003(self):
+    #     """Test tên hàm hợp lệ: Tên hàm chỉ có chữ cái"""
+    #     self.assertTrue(TestLexer.test("calculate", "calculate,<EOF>", 15003))
+
+    # def test_004(self):
+    #     """Test tên hàm không hợp lệ: Bắt đầu bằng số"""
+    #     self.assertTrue(TestLexer.test("2nd_function", "Error Token 2nd_function", 15004))
+
+    # def test_005(self):
+    #     """Test tên hàm không hợp lệ: Chứa ký tự đặc biệt khác ngoài dấu gạch dưới"""
+    #     self.assertTrue(TestLexer.test("my-function", "Error Token my-function", 15005))
+
+    # def test_006(self):
+    #     """Test tên hàm không hợp lệ: Chứa dấu gạch dưới ở cuối"""
+    #     self.assertTrue(TestLexer.test("my_function_", "Error Token my_function_", 15006))
+
+    # def test_007(self):
+    #     """Test tên hàm không hợp lệ: Chứa số ở giữa tên hàm"""
+    #     self.assertTrue(TestLexer.test("my_function_1", "my_function_1,<EOF>", 15007))
+
+    # def test_008(self):
+    #     """Test tên hàm không hợp lệ: Tên hàm là chuỗi trống"""
+    #     self.assertTrue(TestLexer.test("", "Error Token ", 15008))
+
+    # def test_009(self):
+    #     """Test tên hàm không hợp lệ: Chứa dấu gạch dưới liên tiếp"""
+    #     self.assertTrue(TestLexer.test("my__function", "Error Token my__function", 15009))
+# 16. Mô tả địa chỉ email(bắt đầu bằng các ký tự chữ, số, dấu chấm hoặc dấu gạch dưới; kế tiếp là ký tự @; tên miền chỉ chứa chữ cái và có tối đa một dấu chấm.)
+    # def test_001(self):
+    #     """Test email hợp lệ: Email đơn giản"""
+    #     self.assertTrue(TestLexer.test("user.name@domain.com", "user.name@domain.com,<EOF>", 16001))
+
+    # def test_002(self):
+    #     """Test email hợp lệ: Email với tên miền không có dấu chấm"""
+    #     self.assertTrue(TestLexer.test("username@domain", "username@domain,<EOF>", 16002))
+
+    # def test_003(self):
+    #     """Test email hợp lệ: Email với tên miền chứa một dấu chấm"""
+    #     self.assertTrue(TestLexer.test("user_name@domain.co", "user_name@domain.co,<EOF>", 16003))
+
+    # def test_004(self):
+    #     """Test email không hợp lệ: Chứa hai dấu chấm trong tên miền"""
+    #     self.assertTrue(TestLexer.test("user@domain..com", "Error Token user@domain..com", 16004))
+
+    # def test_005(self):
+    #     """Test email không hợp lệ: Tên bắt đầu bằng dấu chấm"""
+    #     self.assertTrue(TestLexer.test(".username@domain.com", "Error Token .username@domain.com", 16005))
+
+    # def test_006(self):
+    #     """Test email không hợp lệ: Tên chứa dấu `@` hai lần"""
+    #     self.assertTrue(TestLexer.test("username@domain@com", "Error Token username@domain@com", 16006))
+
+    # def test_007(self):
+    #     """Test email không hợp lệ: Tên miền bắt đầu bằng dấu chấm"""
+    #     self.assertTrue(TestLexer.test("username@.com", "Error Token username@.com", 16007))
+
+    # def test_008(self):
+    #     """Test email không hợp lệ: Tên miền chứa ký tự đặc biệt"""
+    #     self.assertTrue(TestLexer.test("username@domain!com", "Error Token username@domain!com", 16008))
+
+    # def test_009(self):
+    #     """Test email không hợp lệ: Tên email trống"""
+    #     self.assertTrue(TestLexer.test("", "Error Token ", 16009))
+# 17. Mô tả mật khẩu mạnh(dài ít nhất 8 ký tự ;chứa ít nhất 1 chữ cái viết hoa, 1 chữ cái viết thường, 1 chữ số, và 1 ký tự đặc biệt.)
     def test_001(self):
-        """Test thẻ div hợp lệ: Chứa thẻ mở và đóng, với các attribute hợp lệ"""
-        self.assertTrue(TestLexer.test('<div class="container" id="main">Content here</div>', '<div class="container" id="main">Content here</div>,<EOF>', 1001))
+        """Test mật khẩu hợp lệ: Chứa chữ cái viết hoa, viết thường, chữ số và ký tự đặc biệt"""
+        self.assertTrue(TestLexer.test("Password1!", "Password1!,<EOF>", 17001))
 
     def test_002(self):
-        """Test thẻ div hợp lệ: Chỉ có thẻ mở với các attribute hợp lệ"""
-        self.assertTrue(TestLexer.test('<div class="header" style="color: red">Header content', '<div class="header" style="color: red">Header content,<EOF>', 1002))
+        """Test mật khẩu hợp lệ: Chứa chữ cái viết hoa, viết thường, chữ số và ký tự đặc biệt"""
+        self.assertTrue(TestLexer.test("Abc1234@", "Abc1234@,<EOF>", 17002))
 
     def test_003(self):
-        """Test thẻ div hợp lệ: Thẻ mở và đóng, với attribute và nội dung tùy ý"""
-        self.assertTrue(TestLexer.test('<div id="footer">Footer content</div>', '<div id="footer">Footer content</div>,<EOF>', 1003))
+        """Test mật khẩu hợp lệ: Mật khẩu dài và có đầy đủ các yêu cầu"""
+        self.assertTrue(TestLexer.test("StrongPass1#", "StrongPass1#,<EOF>", 17003))
 
     def test_004(self):
-        """Test thẻ div không hợp lệ: Sai cú pháp attribute trong thẻ mở"""
-        self.assertTrue(TestLexer.test('<div class="container" style="color:red" >Content</div>', 'Error Token <div class="container" style="color:red" >Content</div>', 1004))
+        """Test mật khẩu không hợp lệ: Mật khẩu không có chữ cái viết hoa"""
+        self.assertTrue(TestLexer.test("password1!", "Error Token password1!", 17004))
 
     def test_005(self):
-        """Test thẻ div không hợp lệ: Cặp dấu ngoặc nhọn không tương ứng"""
-        self.assertTrue(TestLexer.test('<div class="box">Content<div>', 'Error Token <div class="box">Content<div>', 1005))
+        """Test mật khẩu không hợp lệ: Mật khẩu không có chữ cái viết thường"""
+        self.assertTrue(TestLexer.test("PASSWORD123!", "Error Token PASSWORD123!", 17005))
 
     def test_006(self):
-        """Test thẻ div không hợp lệ: Không có thẻ mở hay đóng"""
-        self.assertTrue(TestLexer.test('', 'Error Token ', 1006))
+        """Test mật khẩu không hợp lệ: Mật khẩu không có ký tự đặc biệt"""
+        self.assertTrue(TestLexer.test("Password123", "Error Token Password123", 17006))
 
     def test_007(self):
-        """Test thẻ div không hợp lệ: Dài hơn với nhiều thẻ mở và đóng"""
-        self.assertTrue(TestLexer.test('<div class="section"><div id="header">Header</div><div id="content">Content</div></div>', 'Error Token <div class="section"><div id="header">Header</div><div id="content">Content</div></div>,<EOF>', 1007))
+        """Test mật khẩu không hợp lệ: Mật khẩu quá ngắn (dưới 8 ký tự)"""
+        self.assertTrue(TestLexer.test("Pass1!", "Error Token Pass1!", 17007))
+
+    def test_008(self):
+        """Test mật khẩu không hợp lệ: Mật khẩu chỉ chứa số"""
+        self.assertTrue(TestLexer.test("12345678", "Error Token 12345678", 17008))
+
+    def test_009(self):
+        """Test mật khẩu không hợp lệ: Mật khẩu chỉ chứa chữ cái viết thường"""
+        self.assertTrue(TestLexer.test("password", "Error Token password", 17009))
+
+    def test_010(self):
+        """Test mật khẩu không hợp lệ: Mật khẩu không có chữ số"""
+        self.assertTrue(TestLexer.test("Password@", "Error Token Password@", 17010))
