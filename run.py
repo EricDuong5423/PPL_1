@@ -44,7 +44,7 @@ def main(argv):
     elif argv[0] == 'gen':
         # java -jar ../libs/antlr/antlr-4.9.2-complete.jar -o target -no-listener -visitor main/MT22.g4
         subprocess.run(["java", "-jar", ANTLR_JAR, "-o", "target",
-                       "-no-listener", "-visitor", "main/VoTien.g4"])
+                       "-no-listener", "-visitor", "main/MiniGo.g4"])
     elif argv[0] == 'clear':
         folders = ["ASTGen/input", "ASTGen/output",
                   "Check/input", "Check/output", 
@@ -81,7 +81,7 @@ def main(argv):
     elif argv[0] == 'test':
         if not os.path.isdir(TARGET_DIR):
             subprocess.run(["java", "-jar", ANTLR_JAR, "-o", "target",
-                       "-no-listener", "-visitor", "main/VoTien.g4"])
+                       "-no-listener", "-visitor", "main/MiniGo.g4"])
         if not (TARGET_DIR) in sys.path:
             sys.path.append(TARGET_DIR)
             sys.path.append("target")
@@ -130,7 +130,7 @@ def generate_repeating_sequence(size):
     repeated_sequence = (base_sequence * ((size // len(base_sequence)) + 1))[:size]
     return repeated_sequence
 
-def printVoTien(argv, stream, result):
+def printMiniGo(argv, stream, result):
     print("----------------------------------------------------------------------")
     print(f'{Fore.RED}{argv} - Assignment- PPL - HK242 - VO TIEN{Style.RESET_ALL} ')
     print(f'{Fore.GREEN}Vo Tien{Style.RESET_ALL} : {Fore.BLUE}https://www.facebook.com/Shiba.Vo.Tien{Style.RESET_ALL}')
@@ -177,7 +177,7 @@ def test(argv, suite):
     pprint(result.failures)
     stream.seek(0)
     print('Test output\n', stream.read())
-    printVoTien(argv, stream, result)
+    printMiniGo(argv, stream, result)
 
 
 def printUsage():

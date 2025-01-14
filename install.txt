@@ -18,23 +18,22 @@ oot@c55db91fedde:/usr/src/PPL# source myenv/bin/activate
 (myenv) root@c55db91fedde:/usr/src/PPL# pip install -r requirements.txt
 (myenv) root@c55db91fedde:/usr/src/PPL# python3 run.py gen
 
-(myenv) root@c55db91fedde:/usr/src/PPL# python3 run.py test CheckerSuite test_1
+(myenv) root@c55db91fedde:/usr/src/PPL# python3 run.py test LexerSuite test_001
 Tests run  1
 Errors  []
 []
 Test output
  .
 ----------------------------------------------------------------------
-Ran 1 test in 0.002s
+Ran 1 test in 0.004s
 
 OK
 
 ----------------------------------------------------------------------
-CheckerSuite - test_1 - Assignment- PPL - HK242 - VO TIEN 
+LexerSuite - test_001 - Assignment- PPL - HK242 - VO TIEN 
 Vo Tien : https://www.facebook.com/Shiba.Vo.Tien
 Tests run: 1
 1
 .
 Pass full 10.
 ----------------------------------------------------------------------
-(myenv) root@c55db91fedde:/usr/src/PPL# python3 run.py test CodeGenSuite test_1

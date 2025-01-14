@@ -17,16 +17,15 @@ if not './main/' in sys.path:
     sys.path.append('./main/')
 if os.path.isdir('./target/') and not './target/' in sys.path:
     sys.path.append('./target/')
-from VoTienLexer import VoTienLexer
-from VoTienParser import VoTienParser
+from MiniGoLexer import MiniGoLexer
+from MiniGoParser import MiniGoParser
 from lexererr import *
-from ASTGeneration import ASTGeneration
 
 JASMIN_JAR = "./test/CodeGen/external/jasmin.jar"
 TEST_DIR = "./test/testcases/"
 SOL_DIR = "./test/"
-Lexer = VoTienLexer
-Parser = VoTienParser
+Lexer = MiniGoLexer
+Parser = MiniGoParser
 
 
 class TestUtil:
