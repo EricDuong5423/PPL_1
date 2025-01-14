@@ -11,7 +11,7 @@ else:
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3A")
+        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3C")
         buf.write("\f\4\2\t\2\3\2\6\2\6\n\2\r\2\16\2\7\3\2\3\2\3\2\2\2\3")
         buf.write("\2\2\2\2\13\2\5\3\2\2\2\4\6\7\3\2\2\5\4\3\2\2\2\6\7\3")
         buf.write("\2\2\2\7\5\3\2\2\2\7\b\3\2\2\2\b\t\3\2\2\2\t\n\7\2\2\3")
@@ -37,10 +37,7 @@ class MiniGoParser ( Parser ):
                      "'=='", "'!='", "'<'", "'<='", "'>'", "'>='", "'&&'", 
                      "'||'", "'!'", "'='", "'+='", "'-='", "'*='", "'/='", 
                      "'%='", "'.'", "'('", "')'", "'{'", "'}'", "'['", "']'", 
-                     "','", "';'", "<INVALID>", "<INVALID>", "<INVALID>", 
-                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                     "'U'", "'I'" ]
+                     "','", "';'" ]
 
     symbolicNames = [ "<INVALID>", "<INVALID>", "IF", "ELSE", "FOR", "RETURN", 
                       "FUNC", "TYPE", "STRUCT", "INTERFACE", "STRING", "INT", 
@@ -51,9 +48,9 @@ class MiniGoParser ( Parser ):
                       "SUB_ASSIGN", "MUL_ASSIGN", "DIV_ASSIGN", "MOD_ASSIGN", 
                       "DOT", "LPAREN", "RPAREN", "LCURPAREN", "RCURPAREN", 
                       "LSQUAREPAREN", "RSQUAREPAREN", "COM", "COCOM", "ID", 
-                      "INT_LIT", "BIN_LIT", "OCT_LIT", "HEX_LIT", "FLOAT_LIT", 
-                      "WS", "COMMENT", "COMMENTS", "STRING_LIT", "ERROR_CHAR", 
-                      "UNCLOSE_STRING", "ILLEGAL_ESCAPE" ]
+                      "INT_LIT", "BIN_LIT", "OCT_LIT", "HEX_LIT", "BOOL_LIT", 
+                      "NIL_LIT", "FLOAT_LIT", "STRING_LIT", "WS", "COMMENT_LINE", 
+                      "COMMENT", "ERROR_CHAR", "UNCLOSE_STRING", "ILLEGAL_ESCAPE" ]
 
     RULE_program = 0
 
@@ -115,14 +112,16 @@ class MiniGoParser ( Parser ):
     BIN_LIT=53
     OCT_LIT=54
     HEX_LIT=55
-    FLOAT_LIT=56
-    WS=57
-    COMMENT=58
-    COMMENTS=59
-    STRING_LIT=60
-    ERROR_CHAR=61
-    UNCLOSE_STRING=62
-    ILLEGAL_ESCAPE=63
+    BOOL_LIT=56
+    NIL_LIT=57
+    FLOAT_LIT=58
+    STRING_LIT=59
+    WS=60
+    COMMENT_LINE=61
+    COMMENT=62
+    ERROR_CHAR=63
+    UNCLOSE_STRING=64
+    ILLEGAL_ESCAPE=65
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
