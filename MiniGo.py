@@ -24,45 +24,7 @@ options{
 	language = Python3;
 }
 
-// ! ---------------- PASER DEADLINE PASS 13 TEST CASE 23:59 16/1 ----------------------- */
-
-program: ((CONST ID ASSIGN expression) | NEWLINE)+ EOF;
-
-//TODO Literal 6.6 pdf
-literal:
-	DECIMAL_LIT
-	| FLOAT_LIT
-	| STRING_LIT
-	| TRUE
-	| FALSE
-	| array_literal
-	| struct_literal;
-//Array_literal
-array_literal: dim_lit type_array LCPAREN list_expression_lit RCPAREN;
-dim_lit: dim dim_lit | dim;
-dim: LSPAREN DECIMAL_LIT RSPAREN;
-list_expression_lit: LCPAREN? literal (COMMA list_expression_lit)? RCPAREN? | literal;
-type_array: INT | FLOAT | BOOLEAN | STRING;
-
-struct_literal: ID LCPAREN list_elements_lit RCPAREN;
-list_elements_lit: list_element COMMA list_elements_lit | list_element;
-list_element: ID COLON literal;
-
-// TODO 5.2 Expressions 6 pdf
-list_expression: expression COMMA list_expression | expression;
-expression: expression OR expression1 | expression1;
-expression1: expression1 AND expression2 | expression2;
-expression2: expression2 (EQUAL | NEQUAL | LT | LTE | GT | GTE) expression3 | expression3;
-expression3: expression3 (ADD | SUB) expression4 | expression4;
-expression4: expression4 (MUL | DIV | MOD) expression5 | expression5;
-expression5: (NOT | SUB) expression6 | expression6;
-expression6: expression6 (LSPAREN expression RSPAREN | DOT expression) | expression7;
-expression7: literal | LPAREN expression RPAREN | ID | ID LPAREN funcall RPAREN;
-
-funcall: funcall_noempty | ;
-funcall_noempty: expression | expression COMMA funcall_noempty;
-
-//! ---------------- PASER ----------------------- */
+program: 'votien'+ EOF;
 
 // ! ---------------- LEXER DEADLINE PASS 13 TEST CASE 23:59 16/1 ----------------------- */
 
@@ -110,17 +72,16 @@ MUL_ASSIGN: '*=';
 DIV_ASSIGN: '/=';
 MOD_ASSIGN: '%=';
 DOT: '.';
-COLON: ':';
-COMMA: ',';
-COCOM: ';';
 
 //TODO Separators 3.3.4 pdf
 LPAREN: '(';
 RPAREN: ')';
-LCPAREN: '{';
-RCPAREN: '}';
-LSPAREN: '[';
-RSPAREN: ']';
+LCURPAREN: '{';
+RCURPAREN: '}';
+LSQUAREPAREN: '[';
+RSQUAREPAREN: ']';
+COM: ',';
+COCOM: ';';
 
 //TODO Identifiers 3.3.1 pdf
 ID: [a-zA-Z_][a-zA-Z0-9_]*;
@@ -138,12 +99,14 @@ HEX_LIT: '0'[xX][0-9A-Fa-f]+{
 };
 INT_LIT: DECIMAL_LIT | BIN_LIT | OCT_LIT | HEX_LIT;
 
-FLOAT_LIT: DIGITS OPT_FRAC OPT_EXP 
-         | DIGITS OPT_EXP;
+FLOAT_LIT: POR_OR_NEGA START_DIGIT DIGITS OPT_FRAC OPT_EXP 
+         | POR_OR_NEGA START_DIGIT DIGITS OPT_EXP;
+fragment START_DIGIT: [1-9];
 fragment DIGIT: [0-9];
-fragment DIGITS: ('0' | [1-9] DIGIT*);
+fragment DIGITS: DIGIT*;
 fragment OPT_FRAC: ('.'DIGIT*)?;
-fragment OPT_EXP: ([Ee][+-]? ( DIGITS | '0'))?;
+fragment OPT_EXP: ([Ee]POR_OR_NEGA (START_DIGIT DIGITS | '0'))?;
+fragment POR_OR_NEGA: [+-]?;
 
 STRING_LIT: '"' STRING_CHAR* '"' {self.text = self.text[1:-1]};
 fragment STRING_CHAR: ~[\n\\"] | ESC_SEQ;
@@ -154,7 +117,7 @@ BOOL_LIT: TRUE | FALSE;
 NIL_LIT: NIL;
 
 //TODO skip 3.1 and 3.2 pdf
-NEWLINE: '\r'? '\n';
+LINE_BREAK: '\r'? '\n';
 WS: [ \t\f\r]+ -> skip; // skip spaces, tabs 
 COMMENT_LINE: '//' ~[\n]* -> skip;
 COMMENT: ('/*' (COMMENT | .)*? '*/') -> skip;
