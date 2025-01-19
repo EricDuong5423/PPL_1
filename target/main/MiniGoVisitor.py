@@ -19,6 +19,16 @@ class MiniGoVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by MiniGoParser#list_literal.
+    def visitList_literal(self, ctx:MiniGoParser.List_literalContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MiniGoParser#list_literal_noempty.
+    def visitList_literal_noempty(self, ctx:MiniGoParser.List_literal_noemptyContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by MiniGoParser#array_literal.
     def visitArray_literal(self, ctx:MiniGoParser.Array_literalContext):
         return self.visitChildren(ctx)
@@ -34,8 +44,13 @@ class MiniGoVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by MiniGoParser#list_expression_lit.
-    def visitList_expression_lit(self, ctx:MiniGoParser.List_expression_litContext):
+    # Visit a parse tree produced by MiniGoParser#list_array_element.
+    def visitList_array_element(self, ctx:MiniGoParser.List_array_elementContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MiniGoParser#array_element.
+    def visitArray_element(self, ctx:MiniGoParser.Array_elementContext):
         return self.visitChildren(ctx)
 
 

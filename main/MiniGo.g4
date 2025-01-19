@@ -26,7 +26,7 @@ options{
 
 // ! ---------------- PASER DEADLINE PASS 13 TEST CASE 23:59 16/1 ----------------------- */
 
-program: ((CONST ID ASSIGN expression) | NEWLINE)+ EOF;
+program: NEWLINE* declared (declared | NEWLINE)* EOF;
 
 //TODO Literal 6.6 pdf
 literal:
@@ -37,13 +37,25 @@ literal:
 	| FALSE
 	| array_literal
 	| struct_literal;
+
+//list_literal
+list_literal: list_literal_noempty | ;
+list_literal_noempty: literal COMMA list_literal | literal;
+
+//basic type
+type: basic_type | array_type_lit | ID;
+basic_type: INT | FLOAT | BOOLEAN | STRING;
+array_type_lit: (array_type array_type_lit | array_type) basic_type;
+array_type: LSPAREN DECIMAL_LIT RSPAREN;
+
 //Array_literal
-array_literal: dim_lit type_array LCPAREN list_expression_lit RCPAREN;
+array_literal: dim_lit type LCPAREN list_array_element RCPAREN;
 dim_lit: dim dim_lit | dim;
 dim: LSPAREN DECIMAL_LIT RSPAREN;
-list_expression_lit: LCPAREN? literal (COMMA list_expression_lit)? RCPAREN? | literal;
-type_array: INT | FLOAT | BOOLEAN | STRING;
+list_array_element: array_element COMMA list_array_element | array_element;
+array_element: literal | LCPAREN list_literal RCPAREN;
 
+//Struct_literal
 struct_literal: ID LCPAREN list_elements_lit RCPAREN;
 list_elements_lit: list_element COMMA list_elements_lit | list_element;
 list_element: ID COLON literal;
@@ -59,8 +71,48 @@ expression5: (NOT | SUB) expression6 | expression6;
 expression6: expression6 (LSPAREN expression RSPAREN | DOT expression) | expression7;
 expression7: literal | LPAREN expression RPAREN | ID | ID LPAREN funcall RPAREN;
 
+//function call
 funcall: funcall_noempty | ;
 funcall_noempty: expression | expression COMMA funcall_noempty;
+
+//const declared
+const_declared: CONST ID ASSIGN expression;
+//variables declared
+var_declared: VAR ID type (ASSIGN expression)? ;
+//function declared
+func_declared: FUNC ID LPAREN parameter_lit? RPAREN type? LCPAREN (NEWLINE|list_statement)* RCPAREN;
+parameter_lit: parameter COMMA parameter_lit | parameter;
+parameter: ID type;
+//method declared
+method_declared: FUNC LPAREN ID ID RPAREN ID LPAREN parameter_lit? RPAREN type? LCPAREN (NEWLINE|list_statement)* RCPAREN;
+//struct declared
+struct_declared: TYPE ID STRUCT LCPAREN (NEWLINE|list_statement)* RCPAREN;
+//interface_declared
+interface_declared: TYPE ID INTERFACE LCPAREN (NEWLINE|list_statement)* RCPAREN;
+
+//declared
+declared:
+	var_declared
+	| const_declared
+	| func_declared
+	| method_declared
+	| struct_declared
+	| interface_declared;
+
+//TODO Statement 5 and 4 pdf
+list_statement: statement list_statement | statement;
+statement:
+	(
+		declared_statement
+		| assign_statement
+		| if_statement
+		| for_statement
+		| break_statement
+		| continue_statement
+		| call_statement
+		| return_statement
+	);
+
 
 //! ---------------- PASER ----------------------- */
 
@@ -113,6 +165,7 @@ DOT: '.';
 COLON: ':';
 COMMA: ',';
 COCOM: ';';
+COLONEQUAL: ':=';
 
 //TODO Separators 3.3.4 pdf
 LPAREN: '(';
