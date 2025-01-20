@@ -1,0 +1,14 @@
+    
+            func VoTien() {
+                if (x > 10) {} 
+                if (x > 10) {
+                  
+                } else if (x == 10) {
+                    var z str;
+                } else if (y > 10){
+                    var x int;
+                } else {
+                    var z ID;
+                }
+            }
+        

@@ -29,36 +29,48 @@ options{
 program: NEWLINE* declared (declared | NEWLINE)* EOF;
 
 //TODO Literal 6.6 pdf
-literal:
-	DECIMAL_LIT
-	| FLOAT_LIT
-	| STRING_LIT
-	| TRUE
-	| FALSE
-	| array_literal
-	| struct_literal;
+literal:DECIMAL_LIT
+       | BIN_LIT
+       | OCT_LIT
+       | HEX_LIT
+	   | FLOAT_LIT
+	   | STRING_LIT
+	   | TRUE
+	   | FALSE
+	   | array_literal
+	   | struct_literal;
 
 //list_literal
 list_literal: list_literal_noempty | ;
 list_literal_noempty: literal COMMA list_literal | literal;
 
 //basic type
-type: basic_type | array_type_lit | ID;
-basic_type: INT | FLOAT | BOOLEAN | STRING;
-array_type_lit: (array_type array_type_lit | array_type) basic_type;
+all_type: INT 
+        | FLOAT 
+        | BOOLEAN 
+        | STRING 
+        | list_array_type_lit 
+        | ID;
+basic_type: INT 
+          | FLOAT 
+          | BOOLEAN 
+          | STRING 
+          | ID;
+list_array_type_lit: array_type_lit basic_type;
+array_type_lit: array_type array_type_lit | array_type;
 array_type: LSPAREN DECIMAL_LIT RSPAREN;
 
 //Array_literal
-array_literal: dim_lit type LCPAREN list_array_element RCPAREN;
+array_literal: dim_lit all_type LCPAREN list_array_element RCPAREN;
 dim_lit: dim dim_lit | dim;
 dim: LSPAREN DECIMAL_LIT RSPAREN;
 list_array_element: array_element COMMA list_array_element | array_element;
 array_element: literal | LCPAREN list_literal RCPAREN;
 
 //Struct_literal
-struct_literal: ID LCPAREN list_elements_lit RCPAREN;
+struct_literal: ID LCPAREN list_elements_lit? RCPAREN;
 list_elements_lit: list_element COMMA list_elements_lit | list_element;
-list_element: ID COLON literal;
+list_element: ID COLON expression;
 
 // TODO 5.2 Expressions 6 pdf
 list_expression: expression COMMA list_expression | expression;
@@ -67,7 +79,7 @@ expression1: expression1 AND expression2 | expression2;
 expression2: expression2 (EQUAL | NEQUAL | LT | LTE | GT | GTE) expression3 | expression3;
 expression3: expression3 (ADD | SUB) expression4 | expression4;
 expression4: expression4 (MUL | DIV | MOD) expression5 | expression5;
-expression5: (NOT | SUB) expression6 | expression6;
+expression5: (NOT | SUB) expression | expression6;
 expression6: expression6 (LSPAREN expression RSPAREN | DOT expression) | expression7;
 expression7: literal | LPAREN expression RPAREN | ID | ID LPAREN funcall RPAREN;
 
@@ -78,22 +90,22 @@ funcall_noempty: expression | expression COMMA funcall_noempty;
 //const declared
 const_declared: CONST ID ASSIGN expression;
 //variables declared
-var_declared: VAR ID type (ASSIGN expression)? ;
+var_declared: VAR ID (all_type | all_type? ASSIGN expression);
 //function declared
-func_declared: FUNC ID LPAREN parameter_lit? RPAREN type? LCPAREN (NEWLINE|list_statement)* RCPAREN;
+func_declared: FUNC ID LPAREN parameter_lit? RPAREN all_type? ignore LCPAREN (NEWLINE | list_statement)* RCPAREN ;
 parameter_lit: parameter COMMA parameter_lit | parameter;
-parameter: ID type;
+parameter: ID all_type;
 //method declared
-method_declared: FUNC LPAREN ID ID RPAREN ID LPAREN parameter_lit? RPAREN type? LCPAREN (NEWLINE|list_statement)* RCPAREN;
+method_declared: FUNC LPAREN ID ID RPAREN ID LPAREN parameter_lit? RPAREN all_type? ignore LCPAREN (NEWLINE | list_statement)* RCPAREN;
 //struct declared
-struct_declared: TYPE ID STRUCT LCPAREN (NEWLINE|list_statement)* RCPAREN;
+struct_declared: TYPE ID STRUCT ignore LCPAREN (NEWLINE | list_statement)* RCPAREN (COCOM | NEWLINE+);
 //interface_declared
-interface_declared: TYPE ID INTERFACE LCPAREN (NEWLINE|list_statement)* RCPAREN;
+interface_declared: TYPE ID INTERFACE ignore LCPAREN (NEWLINE | list_statement)* RCPAREN (COCOM | NEWLINE+);
 
 //declared
 declared:
-	var_declared
-	| const_declared
+	(var_declared COCOM)
+	| (const_declared COCOM)
 	| func_declared
 	| method_declared
 	| struct_declared
@@ -101,9 +113,44 @@ declared:
 
 //TODO Statement 5 and 4 pdf
 list_statement: statement list_statement | statement;
+
+//declared statement
+declared_statement: declared;
+//assign statement
+assign_statement: list_assignment_lhs operators expression;
+operators:  COLONEQUAL | ADD_ASSIGN | SUB_ASSIGN | MUL_ASSIGN | DIV_ASSIGN | MOD_ASSIGN;
+list_assignment_lhs: assignment_lhs DOT list_assignment_lhs | assignment_lhs;
+assignment_lhs: (ID (list_array_index | ));
+list_array_index: array_index list_array_index | array_index;
+array_index: LSPAREN expression RSPAREN;
+//if statement
+else_statement: ELSE ignore LCPAREN (NEWLINE | list_statement)* RCPAREN;
+elif_statement: | ELSE IF LPAREN expression RPAREN ignore LCPAREN (NEWLINE | list_statement)* RCPAREN elif_statement;
+if_statement: IF LPAREN expression RPAREN ignore LCPAREN (NEWLINE | list_statement)* RCPAREN NEWLINE* elif_statement NEWLINE* else_statement?;
+//for statement
+range_loop: ID COMMA ID COLONEQUAL RANGE expression;
+init_loop: (assign_statement | var_declared) COCOM expression COCOM assign_statement;
+basic_loop: expression;
+for_statement: FOR (basic_loop | init_loop | range_loop) ignore LCPAREN (NEWLINE | list_statement)* RCPAREN;
+//break statement
+break_statement: BREAK;
+//continue statement
+continue_statement: CONTINUE;
+//call statement
+call_statement: ((list_assignment_lhs DOT) | ) ID LPAREN (list_expression | ) RPAREN;
+//return statement
+return_statement: RETURN ignore (expression | );
+//end statement
+end_statement: (COCOM NEWLINE*) | (NEWLINE+);
+//struct statement
+struct_statement: ID all_type;
+//method statement
+method_parameter: ID all_type?;
+method_parameter_lit: method_parameter COMMA method_parameter_lit | method_parameter;
+method_statement: ID LPAREN method_parameter_lit RPAREN all_type?;
 statement:
 	(
-		declared_statement
+		var_declared | const_declared
 		| assign_statement
 		| if_statement
 		| for_statement
@@ -111,8 +158,11 @@ statement:
 		| continue_statement
 		| call_statement
 		| return_statement
-	);
-
+        | struct_statement
+        | method_statement
+	)
+    end_statement;
+ignore: NEWLINE*;
 
 //! ---------------- PASER ----------------------- */
 
