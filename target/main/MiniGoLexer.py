@@ -418,6 +418,7 @@ class MiniGoLexer(Lexer):
                                     self.RETURN, self.CONTINUE, self.BREAK,
                                     self.RPAREN, self.RCPAREN, self.RSPAREN]:
                     self.text = ";"
+                    self.type = self.COCOM
                 else:
                     self.skip()
 

@@ -90,3 +90,30 @@ class LexerSuite(unittest.TestCase):
         self.assertTrue(TestLexer.test("""
             2.
 """, "2.,;,<EOF>", inspect.stack()[0].function))
+    def test_019(self):
+        """NEW_LINE"""
+        self.assertTrue(TestLexer.test("""
+            type Calculator interface {
+                                        
+                Add(x, y int) int;
+                Subtract(a, b float, c int) [3]ID;
+                Reset()
+                                        
+                SayHello(name string);
+                                        
+            }
+""", "", inspect.stack()[0].function))
+    def test_020(self):
+        """for_statement"""
+        self.assertTrue(TestLexer.test("""    
+            func VoTien() {
+                if (x > 10) {return; } 
+                if (x > 10) {
+                  return; 
+                } else if (x == 10) {
+                    var z str;
+                } else {
+                    var z ID;
+                }
+            }
+        ""","", inspect.stack()[0].function))
