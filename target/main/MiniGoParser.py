@@ -11,7 +11,7 @@ else:
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3F")
+        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3E")
         buf.write("\u02ad\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
         buf.write("\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\4\r\t\r\4\16")
         buf.write("\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22\4\23\t\23")
@@ -95,16 +95,16 @@ def serializedATN():
         buf.write("f\u0249\3\2\2\2h\u024b\3\2\2\2j\u025c\3\2\2\2l\u025e\3")
         buf.write("\2\2\2n\u0264\3\2\2\2p\u026e\3\2\2\2r\u0280\3\2\2\2t\u0282")
         buf.write("\3\2\2\2v\u0285\3\2\2\2x\u028e\3\2\2\2z\u0290\3\2\2\2")
-        buf.write("|\u02a2\3\2\2\2~\u02a9\3\2\2\2\u0080\u0082\7@\2\2\u0081")
+        buf.write("|\u02a2\3\2\2\2~\u02a9\3\2\2\2\u0080\u0082\7?\2\2\u0081")
         buf.write("\u0080\3\2\2\2\u0082\u0085\3\2\2\2\u0083\u0081\3\2\2\2")
         buf.write("\u0083\u0084\3\2\2\2\u0084\u0086\3\2\2\2\u0085\u0083\3")
         buf.write("\2\2\2\u0086\u008b\5J&\2\u0087\u008a\5J&\2\u0088\u008a")
-        buf.write("\7@\2\2\u0089\u0087\3\2\2\2\u0089\u0088\3\2\2\2\u008a")
+        buf.write("\7?\2\2\u0089\u0087\3\2\2\2\u0089\u0088\3\2\2\2\u008a")
         buf.write("\u008d\3\2\2\2\u008b\u0089\3\2\2\2\u008b\u008c\3\2\2\2")
         buf.write("\u008c\u008e\3\2\2\2\u008d\u008b\3\2\2\2\u008e\u008f\7")
         buf.write("\2\2\3\u008f\3\3\2\2\2\u0090\u009b\7\67\2\2\u0091\u009b")
         buf.write("\78\2\2\u0092\u009b\79\2\2\u0093\u009b\7:\2\2\u0094\u009b")
-        buf.write("\7<\2\2\u0095\u009b\7=\2\2\u0096\u009b\7\25\2\2\u0097")
+        buf.write("\7;\2\2\u0095\u009b\7<\2\2\u0096\u009b\7\25\2\2\u0097")
         buf.write("\u009b\7\26\2\2\u0098\u009b\5\24\13\2\u0099\u009b\5\36")
         buf.write("\20\2\u009a\u0090\3\2\2\2\u009a\u0091\3\2\2\2\u009a\u0092")
         buf.write("\3\2\2\2\u009a\u0093\3\2\2\2\u009a\u0094\3\2\2\2\u009a")
@@ -200,7 +200,7 @@ def serializedATN():
         buf.write("\u016d\u016e\3\2\2\2\u016e\u016f\3\2\2\2\u016f\u0171\7")
         buf.write("\61\2\2\u0170\u0172\5\n\6\2\u0171\u0170\3\2\2\2\u0171")
         buf.write("\u0172\3\2\2\2\u0172\u0173\3\2\2\2\u0173\u0174\5~@\2\u0174")
-        buf.write("\u0179\7\62\2\2\u0175\u0178\7@\2\2\u0176\u0178\5L\'\2")
+        buf.write("\u0179\7\62\2\2\u0175\u0178\7?\2\2\u0176\u0178\5L\'\2")
         buf.write("\u0177\u0175\3\2\2\2\u0177\u0176\3\2\2\2\u0178\u017b\3")
         buf.write("\2\2\2\u0179\u0177\3\2\2\2\u0179\u017a\3\2\2\2\u017a\u017c")
         buf.write("\3\2\2\2\u017b\u0179\3\2\2\2\u017c\u017d\7\63\2\2\u017d")
@@ -214,26 +214,26 @@ def serializedATN():
         buf.write("\u018f\3\2\2\2\u0190\u0191\3\2\2\2\u0191\u0192\3\2\2\2")
         buf.write("\u0192\u0194\7\61\2\2\u0193\u0195\5\n\6\2\u0194\u0193")
         buf.write("\3\2\2\2\u0194\u0195\3\2\2\2\u0195\u0196\3\2\2\2\u0196")
-        buf.write("\u0197\5~@\2\u0197\u019c\7\62\2\2\u0198\u019b\7@\2\2\u0199")
+        buf.write("\u0197\5~@\2\u0197\u019c\7\62\2\2\u0198\u019b\7?\2\2\u0199")
         buf.write("\u019b\5L\'\2\u019a\u0198\3\2\2\2\u019a\u0199\3\2\2\2")
         buf.write("\u019b\u019e\3\2\2\2\u019c\u019a\3\2\2\2\u019c\u019d\3")
         buf.write("\2\2\2\u019d\u019f\3\2\2\2\u019e\u019c\3\2\2\2\u019f\u01a0")
         buf.write("\7\63\2\2\u01a0E\3\2\2\2\u01a1\u01a2\7\b\2\2\u01a2\u01a3")
         buf.write("\7\66\2\2\u01a3\u01a4\7\t\2\2\u01a4\u01a5\5~@\2\u01a5")
-        buf.write("\u01aa\7\62\2\2\u01a6\u01a9\7@\2\2\u01a7\u01a9\5L\'\2")
+        buf.write("\u01aa\7\62\2\2\u01a6\u01a9\7?\2\2\u01a7\u01a9\5L\'\2")
         buf.write("\u01a8\u01a6\3\2\2\2\u01a8\u01a7\3\2\2\2\u01a9\u01ac\3")
         buf.write("\2\2\2\u01aa\u01a8\3\2\2\2\u01aa\u01ab\3\2\2\2\u01ab\u01ad")
         buf.write("\3\2\2\2\u01ac\u01aa\3\2\2\2\u01ad\u01b4\7\63\2\2\u01ae")
-        buf.write("\u01b5\7.\2\2\u01af\u01b1\7@\2\2\u01b0\u01af\3\2\2\2\u01b1")
+        buf.write("\u01b5\7.\2\2\u01af\u01b1\7?\2\2\u01b0\u01af\3\2\2\2\u01b1")
         buf.write("\u01b2\3\2\2\2\u01b2\u01b0\3\2\2\2\u01b2\u01b3\3\2\2\2")
         buf.write("\u01b3\u01b5\3\2\2\2\u01b4\u01ae\3\2\2\2\u01b4\u01b0\3")
         buf.write("\2\2\2\u01b5G\3\2\2\2\u01b6\u01b7\7\b\2\2\u01b7\u01b8")
         buf.write("\7\66\2\2\u01b8\u01b9\7\n\2\2\u01b9\u01ba\5~@\2\u01ba")
-        buf.write("\u01bf\7\62\2\2\u01bb\u01be\7@\2\2\u01bc\u01be\5L\'\2")
+        buf.write("\u01bf\7\62\2\2\u01bb\u01be\7?\2\2\u01bc\u01be\5L\'\2")
         buf.write("\u01bd\u01bb\3\2\2\2\u01bd\u01bc\3\2\2\2\u01be\u01c1\3")
         buf.write("\2\2\2\u01bf\u01bd\3\2\2\2\u01bf\u01c0\3\2\2\2\u01c0\u01c2")
         buf.write("\3\2\2\2\u01c1\u01bf\3\2\2\2\u01c2\u01c9\7\63\2\2\u01c3")
-        buf.write("\u01ca\7.\2\2\u01c4\u01c6\7@\2\2\u01c5\u01c4\3\2\2\2\u01c6")
+        buf.write("\u01ca\7.\2\2\u01c4\u01c6\7?\2\2\u01c5\u01c4\3\2\2\2\u01c6")
         buf.write("\u01c7\3\2\2\2\u01c7\u01c5\3\2\2\2\u01c7\u01c8\3\2\2\2")
         buf.write("\u01c8\u01ca\3\2\2\2\u01c9\u01c3\3\2\2\2\u01c9\u01c5\3")
         buf.write("\2\2\2\u01caI\3\2\2\2\u01cb\u01cc\5<\37\2\u01cc\u01cd")
@@ -257,28 +257,28 @@ def serializedATN():
         buf.write("\u01f4\3\2\2\2\u01f6Y\3\2\2\2\u01f7\u01f8\7\64\2\2\u01f8")
         buf.write("\u01f9\5&\24\2\u01f9\u01fa\7\65\2\2\u01fa[\3\2\2\2\u01fb")
         buf.write("\u01fc\7\4\2\2\u01fc\u01fd\5~@\2\u01fd\u0202\7\62\2\2")
-        buf.write("\u01fe\u0201\7@\2\2\u01ff\u0201\5L\'\2\u0200\u01fe\3\2")
+        buf.write("\u01fe\u0201\7?\2\2\u01ff\u0201\5L\'\2\u0200\u01fe\3\2")
         buf.write("\2\2\u0200\u01ff\3\2\2\2\u0201\u0204\3\2\2\2\u0202\u0200")
         buf.write("\3\2\2\2\u0202\u0203\3\2\2\2\u0203\u0205\3\2\2\2\u0204")
         buf.write("\u0202\3\2\2\2\u0205\u0206\7\63\2\2\u0206]\3\2\2\2\u0207")
         buf.write("\u021a\3\2\2\2\u0208\u0209\7\4\2\2\u0209\u020a\7\3\2\2")
         buf.write("\u020a\u020b\7\60\2\2\u020b\u020c\5&\24\2\u020c\u020d")
         buf.write("\7\61\2\2\u020d\u020e\5~@\2\u020e\u0213\7\62\2\2\u020f")
-        buf.write("\u0212\7@\2\2\u0210\u0212\5L\'\2\u0211\u020f\3\2\2\2\u0211")
+        buf.write("\u0212\7?\2\2\u0210\u0212\5L\'\2\u0211\u020f\3\2\2\2\u0211")
         buf.write("\u0210\3\2\2\2\u0212\u0215\3\2\2\2\u0213\u0211\3\2\2\2")
         buf.write("\u0213\u0214\3\2\2\2\u0214\u0216\3\2\2\2\u0215\u0213\3")
         buf.write("\2\2\2\u0216\u0217\7\63\2\2\u0217\u0218\5^\60\2\u0218")
         buf.write("\u021a\3\2\2\2\u0219\u0207\3\2\2\2\u0219\u0208\3\2\2\2")
         buf.write("\u021a_\3\2\2\2\u021b\u021c\7\3\2\2\u021c\u021d\7\60\2")
         buf.write("\2\u021d\u021e\5&\24\2\u021e\u021f\7\61\2\2\u021f\u0220")
-        buf.write("\5~@\2\u0220\u0225\7\62\2\2\u0221\u0224\7@\2\2\u0222\u0224")
+        buf.write("\5~@\2\u0220\u0225\7\62\2\2\u0221\u0224\7?\2\2\u0222\u0224")
         buf.write("\5L\'\2\u0223\u0221\3\2\2\2\u0223\u0222\3\2\2\2\u0224")
         buf.write("\u0227\3\2\2\2\u0225\u0223\3\2\2\2\u0225\u0226\3\2\2\2")
         buf.write("\u0226\u0228\3\2\2\2\u0227\u0225\3\2\2\2\u0228\u022c\7")
-        buf.write("\63\2\2\u0229\u022b\7@\2\2\u022a\u0229\3\2\2\2\u022b\u022e")
+        buf.write("\63\2\2\u0229\u022b\7?\2\2\u022a\u0229\3\2\2\2\u022b\u022e")
         buf.write("\3\2\2\2\u022c\u022a\3\2\2\2\u022c\u022d\3\2\2\2\u022d")
         buf.write("\u022f\3\2\2\2\u022e\u022c\3\2\2\2\u022f\u0233\5^\60\2")
-        buf.write("\u0230\u0232\7@\2\2\u0231\u0230\3\2\2\2\u0232\u0235\3")
+        buf.write("\u0230\u0232\7?\2\2\u0231\u0230\3\2\2\2\u0232\u0235\3")
         buf.write("\2\2\2\u0233\u0231\3\2\2\2\u0233\u0234\3\2\2\2\u0234\u0237")
         buf.write("\3\2\2\2\u0235\u0233\3\2\2\2\u0236\u0238\5\\/\2\u0237")
         buf.write("\u0236\3\2\2\2\u0237\u0238\3\2\2\2\u0238a\3\2\2\2\u0239")
@@ -292,7 +292,7 @@ def serializedATN():
         buf.write("\u0250\5f\64\2\u024d\u0250\5d\63\2\u024e\u0250\5b\62\2")
         buf.write("\u024f\u024c\3\2\2\2\u024f\u024d\3\2\2\2\u024f\u024e\3")
         buf.write("\2\2\2\u0250\u0251\3\2\2\2\u0251\u0252\5~@\2\u0252\u0257")
-        buf.write("\7\62\2\2\u0253\u0256\7@\2\2\u0254\u0256\5L\'\2\u0255")
+        buf.write("\7\62\2\2\u0253\u0256\7?\2\2\u0254\u0256\5L\'\2\u0255")
         buf.write("\u0253\3\2\2\2\u0255\u0254\3\2\2\2\u0256\u0259\3\2\2\2")
         buf.write("\u0257\u0255\3\2\2\2\u0257\u0258\3\2\2\2\u0258\u025a\3")
         buf.write("\2\2\2\u0259\u0257\3\2\2\2\u025a\u025b\7\63\2\2\u025b")
@@ -306,9 +306,9 @@ def serializedATN():
         buf.write("\2\u026do\3\2\2\2\u026e\u026f\7\6\2\2\u026f\u0272\5~@")
         buf.write("\2\u0270\u0273\5&\24\2\u0271\u0273\3\2\2\2\u0272\u0270")
         buf.write("\3\2\2\2\u0272\u0271\3\2\2\2\u0273q\3\2\2\2\u0274\u0278")
-        buf.write("\7.\2\2\u0275\u0277\7@\2\2\u0276\u0275\3\2\2\2\u0277\u027a")
+        buf.write("\7.\2\2\u0275\u0277\7?\2\2\u0276\u0275\3\2\2\2\u0277\u027a")
         buf.write("\3\2\2\2\u0278\u0276\3\2\2\2\u0278\u0279\3\2\2\2\u0279")
-        buf.write("\u0281\3\2\2\2\u027a\u0278\3\2\2\2\u027b\u027d\7@\2\2")
+        buf.write("\u0281\3\2\2\2\u027a\u0278\3\2\2\2\u027b\u027d\7?\2\2")
         buf.write("\u027c\u027b\3\2\2\2\u027d\u027e\3\2\2\2\u027e\u027c\3")
         buf.write("\2\2\2\u027e\u027f\3\2\2\2\u027f\u0281\3\2\2\2\u0280\u0274")
         buf.write("\3\2\2\2\u0280\u027c\3\2\2\2\u0281s\3\2\2\2\u0282\u0283")
@@ -329,7 +329,7 @@ def serializedATN():
         buf.write("\u02a2\u029d\3\2\2\2\u02a2\u029e\3\2\2\2\u02a2\u029f\3")
         buf.write("\2\2\2\u02a2\u02a0\3\2\2\2\u02a2\u02a1\3\2\2\2\u02a3\u02a4")
         buf.write("\3\2\2\2\u02a4\u02a5\5r:\2\u02a5}\3\2\2\2\u02a6\u02a8")
-        buf.write("\7@\2\2\u02a7\u02a6\3\2\2\2\u02a8\u02ab\3\2\2\2\u02a9")
+        buf.write("\7?\2\2\u02a7\u02a6\3\2\2\2\u02a8\u02ab\3\2\2\2\u02a9")
         buf.write("\u02a7\3\2\2\2\u02a9\u02aa\3\2\2\2\u02aa\177\3\2\2\2\u02ab")
         buf.write("\u02a9\3\2\2\2L\u0083\u0089\u008b\u009a\u009e\u00a5\u00ad")
         buf.write("\u00b8\u00c8\u00d3\u00da\u00df\u00e8\u00f3\u00fd\u0108")
@@ -372,10 +372,10 @@ class MiniGoParser ( Parser ):
                       "MUL_ASSIGN", "DIV_ASSIGN", "MOD_ASSIGN", "DOT", "COLON", 
                       "COMMA", "COCOM", "COLONEQUAL", "LPAREN", "RPAREN", 
                       "LCPAREN", "RCPAREN", "LSPAREN", "RSPAREN", "ID", 
-                      "DECIMAL_LIT", "BIN_LIT", "OCT_LIT", "HEX_LIT", "INT_LIT", 
-                      "FLOAT_LIT", "STRING_LIT", "BOOL_LIT", "NIL_LIT", 
-                      "NEWLINE", "WS", "COMMENT_LINE", "COMMENT", "ERROR_CHAR", 
-                      "UNCLOSE_STRING", "ILLEGAL_ESCAPE" ]
+                      "INT_LIT", "BIN_LIT", "OCT_LIT", "HEX_LIT", "FLOAT_LIT", 
+                      "STRING_LIT", "BOOL_LIT", "NIL_LIT", "NEWLINE", "WS", 
+                      "COMMENT_LINE", "COMMENT", "ERROR_CHAR", "UNCLOSE_STRING", 
+                      "ILLEGAL_ESCAPE" ]
 
     RULE_program = 0
     RULE_literal = 1
@@ -512,22 +512,21 @@ class MiniGoParser ( Parser ):
     LSPAREN=50
     RSPAREN=51
     ID=52
-    DECIMAL_LIT=53
+    INT_LIT=53
     BIN_LIT=54
     OCT_LIT=55
     HEX_LIT=56
-    INT_LIT=57
-    FLOAT_LIT=58
-    STRING_LIT=59
-    BOOL_LIT=60
-    NIL_LIT=61
-    NEWLINE=62
-    WS=63
-    COMMENT_LINE=64
-    COMMENT=65
-    ERROR_CHAR=66
-    UNCLOSE_STRING=67
-    ILLEGAL_ESCAPE=68
+    FLOAT_LIT=57
+    STRING_LIT=58
+    BOOL_LIT=59
+    NIL_LIT=60
+    NEWLINE=61
+    WS=62
+    COMMENT_LINE=63
+    COMMENT=64
+    ERROR_CHAR=65
+    UNCLOSE_STRING=66
+    ILLEGAL_ESCAPE=67
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
@@ -632,8 +631,8 @@ class MiniGoParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def DECIMAL_LIT(self):
-            return self.getToken(MiniGoParser.DECIMAL_LIT, 0)
+        def INT_LIT(self):
+            return self.getToken(MiniGoParser.INT_LIT, 0)
 
         def BIN_LIT(self):
             return self.getToken(MiniGoParser.BIN_LIT, 0)
@@ -684,10 +683,10 @@ class MiniGoParser ( Parser ):
             self.state = 152
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [MiniGoParser.DECIMAL_LIT]:
+            if token in [MiniGoParser.INT_LIT]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 142
-                self.match(MiniGoParser.DECIMAL_LIT)
+                self.match(MiniGoParser.INT_LIT)
                 pass
             elif token in [MiniGoParser.BIN_LIT]:
                 self.enterOuterAlt(localctx, 2)
@@ -777,7 +776,7 @@ class MiniGoParser ( Parser ):
             self.state = 156
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [MiniGoParser.TRUE, MiniGoParser.FALSE, MiniGoParser.LSPAREN, MiniGoParser.ID, MiniGoParser.DECIMAL_LIT, MiniGoParser.BIN_LIT, MiniGoParser.OCT_LIT, MiniGoParser.HEX_LIT, MiniGoParser.FLOAT_LIT, MiniGoParser.STRING_LIT]:
+            if token in [MiniGoParser.TRUE, MiniGoParser.FALSE, MiniGoParser.LSPAREN, MiniGoParser.ID, MiniGoParser.INT_LIT, MiniGoParser.BIN_LIT, MiniGoParser.OCT_LIT, MiniGoParser.HEX_LIT, MiniGoParser.FLOAT_LIT, MiniGoParser.STRING_LIT]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 154
                 self.list_literal_noempty()
@@ -1122,8 +1121,8 @@ class MiniGoParser ( Parser ):
         def LSPAREN(self):
             return self.getToken(MiniGoParser.LSPAREN, 0)
 
-        def DECIMAL_LIT(self):
-            return self.getToken(MiniGoParser.DECIMAL_LIT, 0)
+        def INT_LIT(self):
+            return self.getToken(MiniGoParser.INT_LIT, 0)
 
         def RSPAREN(self):
             return self.getToken(MiniGoParser.RSPAREN, 0)
@@ -1149,7 +1148,7 @@ class MiniGoParser ( Parser ):
             self.state = 184
             self.match(MiniGoParser.LSPAREN)
             self.state = 185
-            self.match(MiniGoParser.DECIMAL_LIT)
+            self.match(MiniGoParser.INT_LIT)
             self.state = 186
             self.match(MiniGoParser.RSPAREN)
         except RecognitionException as re:
@@ -1292,8 +1291,8 @@ class MiniGoParser ( Parser ):
         def LSPAREN(self):
             return self.getToken(MiniGoParser.LSPAREN, 0)
 
-        def DECIMAL_LIT(self):
-            return self.getToken(MiniGoParser.DECIMAL_LIT, 0)
+        def INT_LIT(self):
+            return self.getToken(MiniGoParser.INT_LIT, 0)
 
         def RSPAREN(self):
             return self.getToken(MiniGoParser.RSPAREN, 0)
@@ -1319,7 +1318,7 @@ class MiniGoParser ( Parser ):
             self.state = 200
             self.match(MiniGoParser.LSPAREN)
             self.state = 201
-            self.match(MiniGoParser.DECIMAL_LIT)
+            self.match(MiniGoParser.INT_LIT)
             self.state = 202
             self.match(MiniGoParser.RSPAREN)
         except RecognitionException as re:
@@ -1436,7 +1435,7 @@ class MiniGoParser ( Parser ):
             self.state = 216
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [MiniGoParser.TRUE, MiniGoParser.FALSE, MiniGoParser.LSPAREN, MiniGoParser.ID, MiniGoParser.DECIMAL_LIT, MiniGoParser.BIN_LIT, MiniGoParser.OCT_LIT, MiniGoParser.HEX_LIT, MiniGoParser.FLOAT_LIT, MiniGoParser.STRING_LIT]:
+            if token in [MiniGoParser.TRUE, MiniGoParser.FALSE, MiniGoParser.LSPAREN, MiniGoParser.ID, MiniGoParser.INT_LIT, MiniGoParser.BIN_LIT, MiniGoParser.OCT_LIT, MiniGoParser.HEX_LIT, MiniGoParser.FLOAT_LIT, MiniGoParser.STRING_LIT]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 211
                 self.literal()
@@ -2158,7 +2157,7 @@ class MiniGoParser ( Parser ):
                 self.state = 299
                 self.expression(0)
                 pass
-            elif token in [MiniGoParser.TRUE, MiniGoParser.FALSE, MiniGoParser.LPAREN, MiniGoParser.LSPAREN, MiniGoParser.ID, MiniGoParser.DECIMAL_LIT, MiniGoParser.BIN_LIT, MiniGoParser.OCT_LIT, MiniGoParser.HEX_LIT, MiniGoParser.FLOAT_LIT, MiniGoParser.STRING_LIT]:
+            elif token in [MiniGoParser.TRUE, MiniGoParser.FALSE, MiniGoParser.LPAREN, MiniGoParser.LSPAREN, MiniGoParser.ID, MiniGoParser.INT_LIT, MiniGoParser.BIN_LIT, MiniGoParser.OCT_LIT, MiniGoParser.HEX_LIT, MiniGoParser.FLOAT_LIT, MiniGoParser.STRING_LIT]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 300
                 self.expression6(0)
@@ -2396,7 +2395,7 @@ class MiniGoParser ( Parser ):
             self.state = 335
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [MiniGoParser.TRUE, MiniGoParser.FALSE, MiniGoParser.SUB, MiniGoParser.NOT, MiniGoParser.LPAREN, MiniGoParser.LSPAREN, MiniGoParser.ID, MiniGoParser.DECIMAL_LIT, MiniGoParser.BIN_LIT, MiniGoParser.OCT_LIT, MiniGoParser.HEX_LIT, MiniGoParser.FLOAT_LIT, MiniGoParser.STRING_LIT]:
+            if token in [MiniGoParser.TRUE, MiniGoParser.FALSE, MiniGoParser.SUB, MiniGoParser.NOT, MiniGoParser.LPAREN, MiniGoParser.LSPAREN, MiniGoParser.ID, MiniGoParser.INT_LIT, MiniGoParser.BIN_LIT, MiniGoParser.OCT_LIT, MiniGoParser.HEX_LIT, MiniGoParser.FLOAT_LIT, MiniGoParser.STRING_LIT]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 333
                 self.funcall_noempty()
@@ -4621,7 +4620,7 @@ class MiniGoParser ( Parser ):
             self.state = 616
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [MiniGoParser.TRUE, MiniGoParser.FALSE, MiniGoParser.SUB, MiniGoParser.NOT, MiniGoParser.LPAREN, MiniGoParser.LSPAREN, MiniGoParser.ID, MiniGoParser.DECIMAL_LIT, MiniGoParser.BIN_LIT, MiniGoParser.OCT_LIT, MiniGoParser.HEX_LIT, MiniGoParser.FLOAT_LIT, MiniGoParser.STRING_LIT]:
+            if token in [MiniGoParser.TRUE, MiniGoParser.FALSE, MiniGoParser.SUB, MiniGoParser.NOT, MiniGoParser.LPAREN, MiniGoParser.LSPAREN, MiniGoParser.ID, MiniGoParser.INT_LIT, MiniGoParser.BIN_LIT, MiniGoParser.OCT_LIT, MiniGoParser.HEX_LIT, MiniGoParser.FLOAT_LIT, MiniGoParser.STRING_LIT]:
                 self.state = 614
                 self.list_expression()
                 pass
@@ -4684,7 +4683,7 @@ class MiniGoParser ( Parser ):
             self.state = 624
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [MiniGoParser.TRUE, MiniGoParser.FALSE, MiniGoParser.SUB, MiniGoParser.NOT, MiniGoParser.LPAREN, MiniGoParser.LSPAREN, MiniGoParser.ID, MiniGoParser.DECIMAL_LIT, MiniGoParser.BIN_LIT, MiniGoParser.OCT_LIT, MiniGoParser.HEX_LIT, MiniGoParser.FLOAT_LIT, MiniGoParser.STRING_LIT]:
+            if token in [MiniGoParser.TRUE, MiniGoParser.FALSE, MiniGoParser.SUB, MiniGoParser.NOT, MiniGoParser.LPAREN, MiniGoParser.LSPAREN, MiniGoParser.ID, MiniGoParser.INT_LIT, MiniGoParser.BIN_LIT, MiniGoParser.OCT_LIT, MiniGoParser.HEX_LIT, MiniGoParser.FLOAT_LIT, MiniGoParser.STRING_LIT]:
                 self.state = 622
                 self.expression(0)
                 pass

@@ -5,8 +5,17 @@ from lexererr import *
 }
 
 @lexer::members {
+def __init__(self, input=None, output:TextIO = sys.stdout):
+    super().__init__(input, output)
+    self.checkVersion("4.9.2")
+    self._interp = LexerATNSimulator(self, self.atn, self.decisionsToDFA, PredictionContextCache())
+    self._actions = None
+    self._predicates = None
+    self.preType = None
+
 def emit(self):
     tk = self.type
+    self.preType = tk;
     if tk == self.UNCLOSE_STRING:       
         result = super().emit();
         raise UncloseString(result.text);
@@ -29,7 +38,7 @@ options{
 program: NEWLINE* declared (declared | NEWLINE)* EOF;
 
 //TODO Literal 6.6 pdf
-literal:DECIMAL_LIT
+literal:INT_LIT
        | BIN_LIT
        | OCT_LIT
        | HEX_LIT
@@ -58,12 +67,12 @@ basic_type: INT
           | ID;
 list_array_type_lit: array_type_lit basic_type;
 array_type_lit: array_type array_type_lit | array_type;
-array_type: LSPAREN DECIMAL_LIT RSPAREN;
+array_type: LSPAREN INT_LIT RSPAREN;
 
 //Array_literal
 array_literal: dim_lit all_type LCPAREN list_array_element RCPAREN;
 dim_lit: dim dim_lit | dim;
-dim: LSPAREN DECIMAL_LIT RSPAREN;
+dim: LSPAREN INT_LIT RSPAREN;
 list_array_element: array_element COMMA list_array_element | array_element;
 array_element: literal | LCPAREN list_literal RCPAREN;
 
@@ -229,24 +238,17 @@ RSPAREN: ']';
 ID: [a-zA-Z_][a-zA-Z0-9_]*;
 
 //TODO Literals 3.3.5 pdf
-DECIMAL_LIT: '0'| [1-9][0-9]*;
-BIN_LIT: '0'[bB][0-1]+{
-    self.text = str(int(self.text, 2));
-};
-OCT_LIT: '0'[oO][0-7]+{
-    self.text = str(int(self.text, 8));
-};
-HEX_LIT: '0'[xX][0-9A-Fa-f]+{
-    self.text = str(int(self.text, 16));
-};
-INT_LIT: DECIMAL_LIT | BIN_LIT | OCT_LIT | HEX_LIT;
+INT_LIT: '0'| [1-9][0-9]*;
+BIN_LIT: '0'[bB][0-1]+;
+OCT_LIT: '0'[oO][0-7]+;
+HEX_LIT: '0'[xX][0-9A-Fa-f]+;
 
-FLOAT_LIT: DIGITS OPT_FRAC OPT_EXP 
-         | DIGITS OPT_EXP;
+FLOAT_LIT:  DIGITS FRAC EXP? 
+         | DIGITS EXP;
 fragment DIGIT: [0-9];
-fragment DIGITS: ('0' | [1-9] DIGIT*);
-fragment OPT_FRAC: ('.'DIGIT*)?;
-fragment OPT_EXP: ([Ee][+-]? ( DIGITS | '0'))?;
+fragment DIGITS: '0' | DIGIT+;
+fragment FRAC: '.'DIGIT*;
+fragment EXP: [Ee][+-]? DIGITS;
 
 STRING_LIT: '"' STRING_CHAR* '"' {self.text = self.text[1:-1]};
 fragment STRING_CHAR: ~[\n\\"] | ESC_SEQ;
@@ -257,7 +259,15 @@ BOOL_LIT: TRUE | FALSE;
 NIL_LIT: NIL;
 
 //TODO skip 3.1 and 3.2 pdf
-NEWLINE: '\r'? '\n';
+NEWLINE: '\r'? '\n'{
+    if self.preType in [self.ID, self.INT_LIT, self.BIN_LIT, self.OCT_LIT, self.HEX_LIT, self.STRING_LIT, self.FLOAT_LIT,
+                        self.TRUE, self.FALSE, self.INT, self.FLOAT, self.STRING, self.BOOLEAN, self.NIL,
+                        self.RETURN, self.CONTINUE, self.BREAK,
+                        self.RPAREN, self.RCPAREN, self.RSPAREN]:
+        self.text = ";"
+    else:
+        self.skip()
+};
 WS: [ \t\f\r]+ -> skip; // skip spaces, tabs 
 COMMENT_LINE: '//' ~[\n]* -> skip;
 COMMENT: ('/*' (COMMENT | .)*? '*/') -> skip;

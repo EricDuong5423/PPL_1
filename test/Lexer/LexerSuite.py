@@ -38,7 +38,7 @@ class LexerSuite(unittest.TestCase):
         
     def test_006(self):
         """Literals INT 16*1 + 1 = 17"""
-        self.assertTrue(TestLexer.test("0x11","17,<EOF>", inspect.stack()[0].function))
+        self.assertTrue(TestLexer.test("0x11","0x11,<EOF>", inspect.stack()[0].function))
     
     def test_007(self):
         """Literals FLOAT"""
@@ -74,3 +74,19 @@ class LexerSuite(unittest.TestCase):
         self.assertTrue(TestLexer.test(""" 
             const a = 2;
 ""","\n,const,a,=,2,;,\n,<EOF>", inspect.stack()[0].function))
+    def test_015(self):
+        """INT_LIT"""
+        self.assertTrue(TestLexer.test("0452.", "0452.,<EOF>", inspect.stack()[0].function))
+    def test_016(self):
+        """INT_LIT"""
+        self.assertTrue(TestLexer.test("-0120", "-,0,120,<EOF>", inspect.stack()[0].function))
+    def test_017(self):
+        """Keywords"""
+        self.assertTrue(TestLexer.test(""" 
+        /* a * */
+ """, "<EOF>", inspect.stack()[0].function))
+    def test_018(self):
+        """NEW_LINE"""
+        self.assertTrue(TestLexer.test("""
+            2.
+""", "2.,;,<EOF>", inspect.stack()[0].function))
