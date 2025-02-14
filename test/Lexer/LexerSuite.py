@@ -62,11 +62,11 @@ class LexerSuite(unittest.TestCase):
 
     def test_012(self):
         """UNCLOSE_STRING"""
-        self.assertTrue(TestLexer.test(""" "VOTIEN\n" ""","Unclosed string: VOTIEN", inspect.stack()[0].function))
+        self.assertTrue(TestLexer.test(""" "VOTIEN\n" ""","Unclosed string: \"VOTIEN", inspect.stack()[0].function))
     
     def test_013(self):
         """ILLEGAL_ESCAPE"""
-        self.assertTrue(TestLexer.test(""" "VOTIEN\\f" ""","Illegal escape in string: VOTIEN\\f", inspect.stack()[0].function))
+        self.assertTrue(TestLexer.test(""" "VOTIEN\\f" ""","Illegal escape in string: \"VOTIEN\\f", inspect.stack()[0].function))
 
     
     def test_014(self):
@@ -117,3 +117,7 @@ class LexerSuite(unittest.TestCase):
                 }
             }
         ""","", inspect.stack()[0].function))
+    def test_021(self):
+        self.assertTrue(TestLexer.test("""
+            1e+7
+""", "1,e,+,7,;,<EOF>", inspect.stack()[0].function))

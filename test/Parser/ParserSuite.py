@@ -193,3 +193,11 @@ class ParserSuite(unittest.TestCase):
         self.assertTrue(TestParser.test("""
         const a = a.2; 
 ""","Error on line 2 col 20: 2", inspect.stack()[0].function))
+    def test_027(self):
+        """Statement"""
+        self.assertTrue(TestParser.test("""
+                                    func Add() {
+                                        for var i [2] int = 0; foo().a.b(); i[3] := 1 {
+                                            return; 
+                                        }
+                                    };""","Error on line 3 col 77: [", inspect.stack()[0].function))

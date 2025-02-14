@@ -37,7 +37,7 @@ options{
 
 program: declared+ EOF;
 
-//TODO Literal
+//Literal
 literal:INT_LIT
        | BIN_LIT
        | OCT_LIT
@@ -50,7 +50,7 @@ literal:INT_LIT
 	   | array_literal
 	   | struct_literal;
 
-//TODO Secondary Literal
+//Secondary Literal
 sec_lit: INT_LIT
        | BIN_LIT
        | OCT_LIT
@@ -183,12 +183,9 @@ statement:
     | return_statement
     | struct_statement
     | method_statement;
-
 //! ---------------- PASER ----------------------- */
 
-// ! ---------------- LEXER DEADLINE PASS 13 TEST CASE 23:59 16/1 ----------------------- */
-
-//TODO Keywords 3.3.2 pdf
+//Keywords
 IF: 'if';
 ELSE: 'else';
 FOR: 'for';
@@ -210,7 +207,7 @@ NIL: 'nil';
 TRUE: 'true';
 FALSE: 'false';
 
-//TODO Operators 3.3.3 pdf
+//Operators
 ADD: '+';
 SUB: '-';
 MUL: '*';
@@ -237,7 +234,7 @@ COMMA: ',';
 COCOM: ';';
 COLONEQUAL: ':=';
 
-//TODO Separators 3.3.4 pdf
+//Separators
 LPAREN: '(';
 RPAREN: ')';
 LCPAREN: '{';
@@ -245,17 +242,16 @@ RCPAREN: '}';
 LSPAREN: '[';
 RSPAREN: ']';
 
-//TODO Identifiers 3.3.1 pdf
+//Identifiers
 ID: [a-zA-Z_][a-zA-Z0-9_]*;
 
-//TODO Literals 3.3.5 pdf
+//Literals
 INT_LIT: '0'| [1-9][0-9]*;
 BIN_LIT: '0'[bB][0-1]+;
 OCT_LIT: '0'[oO][0-7]+;
 HEX_LIT: '0'[xX][0-9A-Fa-f]+;
 
-FLOAT_LIT:  DIGITS FRAC EXP? 
-         | DIGITS EXP;
+FLOAT_LIT:  DIGITS FRAC EXP?;
 fragment DIGIT: [0-9];
 fragment DIGITS: '0' | DIGIT+;
 fragment FRAC: '.'DIGIT*;
@@ -269,7 +265,7 @@ fragment ESC_ILLEGAL: '\\' ~[ntr"\\];
 BOOL_LIT: TRUE | FALSE;
 NIL_LIT: NIL;
 
-//TODO skip 3.1 and 3.2 pdf
+//Skip
 NEWLINE: '\r'? '\n'{
     if self.preType in [self.ID, self.INT_LIT, self.BIN_LIT, self.OCT_LIT, self.HEX_LIT, self.STRING_LIT, self.FLOAT_LIT,
                         self.TRUE, self.FALSE, self.INT, self.FLOAT, self.STRING, self.BOOLEAN, self.NIL,
@@ -284,19 +280,19 @@ WS: [ \t\f\r]+ -> skip; // skip spaces, tabs
 COMMENT_LINE: '//' ~[\n]* -> skip;
 COMMENT: ('/*' (COMMENT | .)*? '*/') -> skip;
 
-//TODO ERROR pdf BTL1 + lexererr.py
+//ERROR
 ERROR_CHAR: . {raise ErrorToken(self.text)};
 UNCLOSE_STRING:'"' STRING_CHAR* ('\r\n' | '\n' | EOF){
     if(len(self.text) >= 2 and self.text[-1] == '\n' and self.text[-2] == '\r'):
-        raise UncloseString(self.text[1:-2])
+        raise UncloseString(self.text[:-2])
     elif(self.text[-1] == '\n') :
-        raise UncloseString(self.text[1:-1])
+        raise UncloseString(self.text[:-1])
     else:
-        raise UncloseString(self.text[1:])
+        raise UncloseString(self.text[:])
 };
 
 ILLEGAL_ESCAPE:'"' STRING_CHAR* ESC_ILLEGAL{
-    raise IllegalEscape(self.text[1:])
+    raise IllegalEscape(self.text[:])
 };
 
 //! ---------------- LEXER ----------------------- */
