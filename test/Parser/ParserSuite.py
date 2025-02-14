@@ -201,3 +201,19 @@ class ParserSuite(unittest.TestCase):
                                             return; 
                                         }
                                     };""","Error on line 3 col 77: [", inspect.stack()[0].function))
+    def test_028(self):
+        """Statement"""
+        self.assertTrue(TestParser.test("""
+                                    func Add() {
+                                        for i[2] := 1; foo().a.b(); i := 1 {
+                                            return; 
+                                        }
+                                    };""","Error on line 3 col 49: :=", inspect.stack()[0].function))
+    def test_029(self):
+        """Statement"""
+        self.assertTrue(TestParser.test("""
+                                    func Add() {
+                                        for var i = 0; i < 10; i += 1 {
+                                           return; 
+                                        }
+                                    };""","successful", inspect.stack()[0].function))

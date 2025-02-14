@@ -26,6 +26,24 @@ class MiniGoListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by MiniGoParser#sec_lit.
+    def enterSec_lit(self, ctx:MiniGoParser.Sec_litContext):
+        pass
+
+    # Exit a parse tree produced by MiniGoParser#sec_lit.
+    def exitSec_lit(self, ctx:MiniGoParser.Sec_litContext):
+        pass
+
+
+    # Enter a parse tree produced by MiniGoParser#list_sec_lit.
+    def enterList_sec_lit(self, ctx:MiniGoParser.List_sec_litContext):
+        pass
+
+    # Exit a parse tree produced by MiniGoParser#list_sec_lit.
+    def exitList_sec_lit(self, ctx:MiniGoParser.List_sec_litContext):
+        pass
+
+
     # Enter a parse tree produced by MiniGoParser#list_literal.
     def enterList_literal(self, ctx:MiniGoParser.List_literalContext):
         pass
@@ -260,6 +278,24 @@ class MiniGoListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by MiniGoParser#list_element_method.
+    def enterList_element_method(self, ctx:MiniGoParser.List_element_methodContext):
+        pass
+
+    # Exit a parse tree produced by MiniGoParser#list_element_method.
+    def exitList_element_method(self, ctx:MiniGoParser.List_element_methodContext):
+        pass
+
+
+    # Enter a parse tree produced by MiniGoParser#element_method.
+    def enterElement_method(self, ctx:MiniGoParser.Element_methodContext):
+        pass
+
+    # Exit a parse tree produced by MiniGoParser#element_method.
+    def exitElement_method(self, ctx:MiniGoParser.Element_methodContext):
+        pass
+
+
     # Enter a parse tree produced by MiniGoParser#const_declared.
     def enterConst_declared(self, ctx:MiniGoParser.Const_declaredContext):
         pass
@@ -302,6 +338,15 @@ class MiniGoListener(ParseTreeListener):
 
     # Exit a parse tree produced by MiniGoParser#parameter.
     def exitParameter(self, ctx:MiniGoParser.ParameterContext):
+        pass
+
+
+    # Enter a parse tree produced by MiniGoParser#list_ID.
+    def enterList_ID(self, ctx:MiniGoParser.List_IDContext):
+        pass
+
+    # Exit a parse tree produced by MiniGoParser#list_ID.
+    def exitList_ID(self, ctx:MiniGoParser.List_IDContext):
         pass
 
 
@@ -359,6 +404,15 @@ class MiniGoListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by MiniGoParser#assign_statement_no_cocom.
+    def enterAssign_statement_no_cocom(self, ctx:MiniGoParser.Assign_statement_no_cocomContext):
+        pass
+
+    # Exit a parse tree produced by MiniGoParser#assign_statement_no_cocom.
+    def exitAssign_statement_no_cocom(self, ctx:MiniGoParser.Assign_statement_no_cocomContext):
+        pass
+
+
     # Enter a parse tree produced by MiniGoParser#assign_statement.
     def enterAssign_statement(self, ctx:MiniGoParser.Assign_statementContext):
         pass
@@ -377,39 +431,12 @@ class MiniGoListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by MiniGoParser#list_assignment_lhs.
-    def enterList_assignment_lhs(self, ctx:MiniGoParser.List_assignment_lhsContext):
-        pass
-
-    # Exit a parse tree produced by MiniGoParser#list_assignment_lhs.
-    def exitList_assignment_lhs(self, ctx:MiniGoParser.List_assignment_lhsContext):
-        pass
-
-
     # Enter a parse tree produced by MiniGoParser#assignment_lhs.
     def enterAssignment_lhs(self, ctx:MiniGoParser.Assignment_lhsContext):
         pass
 
     # Exit a parse tree produced by MiniGoParser#assignment_lhs.
     def exitAssignment_lhs(self, ctx:MiniGoParser.Assignment_lhsContext):
-        pass
-
-
-    # Enter a parse tree produced by MiniGoParser#list_array_index.
-    def enterList_array_index(self, ctx:MiniGoParser.List_array_indexContext):
-        pass
-
-    # Exit a parse tree produced by MiniGoParser#list_array_index.
-    def exitList_array_index(self, ctx:MiniGoParser.List_array_indexContext):
-        pass
-
-
-    # Enter a parse tree produced by MiniGoParser#array_index.
-    def enterArray_index(self, ctx:MiniGoParser.Array_indexContext):
-        pass
-
-    # Exit a parse tree produced by MiniGoParser#array_index.
-    def exitArray_index(self, ctx:MiniGoParser.Array_indexContext):
         pass
 
 
@@ -512,15 +539,6 @@ class MiniGoListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by MiniGoParser#end_statement.
-    def enterEnd_statement(self, ctx:MiniGoParser.End_statementContext):
-        pass
-
-    # Exit a parse tree produced by MiniGoParser#end_statement.
-    def exitEnd_statement(self, ctx:MiniGoParser.End_statementContext):
-        pass
-
-
     # Enter a parse tree produced by MiniGoParser#struct_statement.
     def enterStruct_statement(self, ctx:MiniGoParser.Struct_statementContext):
         pass
@@ -563,15 +581,6 @@ class MiniGoListener(ParseTreeListener):
 
     # Exit a parse tree produced by MiniGoParser#statement.
     def exitStatement(self, ctx:MiniGoParser.StatementContext):
-        pass
-
-
-    # Enter a parse tree produced by MiniGoParser#ignore.
-    def enterIgnore(self, ctx:MiniGoParser.IgnoreContext):
-        pass
-
-    # Exit a parse tree produced by MiniGoParser#ignore.
-    def exitIgnore(self, ctx:MiniGoParser.IgnoreContext):
         pass
 
 

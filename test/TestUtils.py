@@ -94,6 +94,10 @@ class TestParser:
         TestParser.check(TestParser._DIR + 'output/' + str(num) + ".txt", inputfile)
         dest = open(TestParser._DIR + 'output/' + str(num) + ".txt", "r")
         line = dest.read()
+        print(f"Test_num: {num}")
+        print(f"Input: {input}")
+        print(f"Expect: {expect}")
+        print(f"Result: {line}")
         return line == expect
         
     @staticmethod

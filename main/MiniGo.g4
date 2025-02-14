@@ -110,10 +110,6 @@ expression7: literal | LPAREN expression RPAREN | ID | ID LPAREN funcall RPAREN;
 funcall: funcall_noempty | ;
 funcall_noempty: expression | expression COMMA funcall_noempty;
 
-//list_struct
-list_element_method: element_method list_element_method | element_method;
-element_method: statement | method_declared;
-
 //const declared
 const_declared: CONST ID ASSIGN expression COCOM;
 //variables declared
@@ -126,7 +122,7 @@ list_ID: ID COMMA list_ID | ID;
 //method declared
 method_declared: FUNC LPAREN ID ID RPAREN ID LPAREN parameter_lit? RPAREN all_type? LCPAREN list_statement RCPAREN COCOM;
 //struct declared
-struct_declared: TYPE ID STRUCT LCPAREN list_element_method RCPAREN COCOM;
+struct_declared: TYPE ID STRUCT LCPAREN list_statement RCPAREN COCOM;
 //interface_declared
 interface_declared: TYPE ID INTERFACE LCPAREN list_statement RCPAREN COCOM;
 
@@ -145,17 +141,17 @@ list_statement: statement list_statement | statement;
 //declared statement
 declared_statement: declared;
 //assign statement
-assign_statement_no_cocom: assignment_lhs operators expression;
 assign_statement: assignment_lhs operators expression COCOM;
 operators:  COLONEQUAL | ADD_ASSIGN | SUB_ASSIGN | MUL_ASSIGN | DIV_ASSIGN | MOD_ASSIGN;
 assignment_lhs: assignment_lhs (LSPAREN expression RSPAREN | DOT ID)  | ID;
 //if statement
 else_statement: ELSE LCPAREN list_statement RCPAREN;
 elif_statement: | ELSE IF LPAREN expression RPAREN LCPAREN list_statement RCPAREN elif_statement;
-if_statement: IF LPAREN expression RPAREN LCPAREN list_statement RCPAREN elif_statement else_statement? COCOM;
+if_statement: IF LPAREN expression RPAREN LCPAREN list_statement RCPAREN elif_statement? else_statement? COCOM;
 //for statement
+var_declared_for: VAR ID all_type? ASSIGN expression COCOM;
 range_loop: ID COMMA ID COLONEQUAL RANGE expression;
-init_loop: (assign_statement | var_declared) expression COCOM assign_statement_no_cocom;
+init_loop: (ID operators expression COCOM | var_declared_for) expression COCOM ID operators expression;
 basic_loop: expression;
 for_statement: FOR (basic_loop | init_loop | range_loop) LCPAREN list_statement RCPAREN COCOM;
 //break statement
